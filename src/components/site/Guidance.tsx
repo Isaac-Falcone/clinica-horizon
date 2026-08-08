@@ -53,12 +53,9 @@ export function Guidance() {
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            {pillars.map(({ icon: Icon, title, text }) => (
+            {pillars.map(({ title, text }) => (
               <div key={title} className="relative rounded-[24px] border border-white/60 bg-white/10 p-7 shadow-lg backdrop-blur-md transition-all hover:bg-white/20 hover:shadow-xl">
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-[#1db5b2]/20 text-[#12a5a5]">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-5 font-display text-lg font-bold text-[#052835]">{title}</h3>
+                <h3 className="font-display text-lg font-bold text-[#052835]">{title}</h3>
                 <p className="mt-2 text-[14px] leading-[1.55] text-[#2f4f4e] font-medium">{text}</p>
               </div>
             ))}
