@@ -1,0 +1,252 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Clínica Horizon — Design System
+ * Tokens derivados estritamente do documento de Design System fornecido.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-card: 24px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-glow: var(--surface-glow);
+  --color-highlight: var(--highlight);
+  --color-success: var(--success);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0px 12px 32px rgba(9, 38, 48, 0.06);
+  --shadow-lift: 0px 16px 40px rgba(9, 38, 48, 0.1);
+  --shadow-header: 0px 4px 12px rgba(0, 0, 0, 0.05);
+
+  --animate-fade-up: fade-up 0.7s ease-in-out both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Base */
+  --background: oklch(1 0 0); /* #FFFFFF */
+  --foreground: oklch(0.278 0.032 209.5); /* #102A33 */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.278 0.032 209.5);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.278 0.032 209.5);
+
+  /* Marca */
+  --primary: oklch(0.622 0.093 195.1); /* #1C9C9D */
+  --primary-hover: oklch(0.531 0.081 194.8); /* #157F80 */
+  --primary-foreground: oklch(1 0 0);
+  --primary-dark: oklch(0.246 0.032 213.7); /* #092630 */
+
+  --secondary: oklch(0.939 0.024 187.2); /* #D5ECEB */
+  --secondary-foreground: oklch(0.278 0.032 209.5);
+  --surface-alt: oklch(0.939 0.024 187.2); /* #D5ECEB */
+  --surface-glow: oklch(0.966 0.015 187.5); /* #E4F4F3 */
+
+  --muted: oklch(0.966 0.015 187.5);
+  --muted-foreground: oklch(0.462 0.024 213.4); /* #4A5F67 */
+  --accent: oklch(0.966 0.015 187.5);
+  --accent-foreground: oklch(0.278 0.032 209.5);
+
+  --highlight: oklch(0.792 0.152 82.5); /* #F4B400 */
+  --success: oklch(0.514 0.126 148.5); /* #2E7D32 */
+  --destructive: oklch(0.553 0.213 27.9); /* #D32F2F */
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.92 0.012 200);
+  --input: oklch(0.92 0.012 200);
+  --ring: oklch(0.622 0.093 195.1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* --- Componentes do Design System --- */
+
+/* Botão pill primário (#1C9C9D → hover #157F80, translateY(-2px)) */
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 9999px;
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 28px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+/* Botão pill sobre fundo escuro / outline */
+@utility btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  background-color: transparent;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12.5px 26px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    transform: translateY(-2px);
+  }
+}
+
+/* Cartão com profundidade suave */
+@utility card-soft {
+  background-color: var(--color-card);
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease-in-out;
+}
+
+@utility card-hover {
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-4px);
+  }
+}
+
+/* Link de navegação com sublinhado animado a partir do centro */
+@utility nav-link {
+  position: relative;
+  opacity: 0.7;
+  font-size: 15px;
+  transition: opacity 0.3s ease-in-out;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-primary);
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+/* Controle de carrossel */
+@utility carousel-ctrl {
+  display: inline-flex;
+  height: 48px;
+  width: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+  background-color: transparent;
+  color: var(--color-foreground);
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+}
+
+/* Respiro visual: gradiente #E4F4F3 → #FFFFFF */
+@utility bg-glow {
+  background-image: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    var(--color-surface-glow),
+    var(--color-background) 70%
+  );
+}
